@@ -4,6 +4,22 @@ from django.shortcuts import get_object_or_404
 
 
 # Create your views here.
+
+def createfood(request):
+    if request.method == "POST":
+        food_name = request.POST.get('name')
+        food_carbs = request.POST.get('carbs')
+        food_protein = request.POST.get('protein')
+        food_fats = request.POST.get('fats')
+        food_calories = request.POST.get('calories')
+        foods_name = Food.objects.create(name='food_name')
+        foods_carbs = Food.objects.create(name='food_carbs')
+        foods_protein = Food.objects.create(name='food_protein')
+        foods_fats = Food.objects.create(name='food_fats')
+        foods_calories = Food.objects.create(name='food_calories')
+        return render(request, 'myapp/food.html')
+
+
 def index(request):
     if request.method == "POST":
         food_consumed = request.POST.get('food_consumed')
